@@ -1,5 +1,5 @@
 .navbar {
-  padding: 15px;
+  padding: 13px;
   background-color: rgb(107, 63, 160);
 }
 
@@ -11,7 +11,8 @@
 .search {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 13px 0;
+  margin-left: 3px;
 }
 
 .card {
@@ -38,7 +39,7 @@
     box-shadow: 0 0 0 0px rgb(107, 63, 160);
   }
   100% {
-    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 2px white;
   }
 }
 
