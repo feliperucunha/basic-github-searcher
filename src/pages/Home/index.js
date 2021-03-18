@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import { Form, Card, Image, Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 function Home() {
   const [name, setName] = useState('');
@@ -49,15 +50,6 @@ function Home() {
           setData(data);
           setError(null);
         }
-      })
-  }
-
-  const handleRepos = () => {
-    fetch(`https://api.github.com/users/${userInput}/repos`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setData(data);
       })
   }
 
@@ -112,10 +104,12 @@ function Home() {
               </a>
             </Card.Content>
             <Card.Content extra>
-              <a className="pulse" onClick={handleRepos}>
-                <Icon name='fork' />
-                {repos} Repositórios
-              </a>
+              <NavLink to="/repos">
+                <a className="pulse">
+                  <Icon name='fork' />
+                  {repos} Repositórios
+                </a>
+              </NavLink>
             </Card.Content>
           </Card>
         </div>
