@@ -3,7 +3,7 @@ import './styles.css';
 import { Form, Card, Image, Icon } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
-function Home() {
+export default function Home() {
   const [name, setName] = useState('');
   const [userName, setUserName] = useState('');
   const [followers, setFollowers] = useState('');
@@ -89,7 +89,7 @@ function Home() {
             </Card.Content>
 
             <Card.Content extra>
-              <NavLink to="/repos" >
+              <NavLink to={{ pathname: '/repos', state: { userInput } }} >
                 <a className="pulse">
                   <Icon name='fork' />
                   {repos} Repositório(s)
@@ -120,5 +120,3 @@ function Home() {
 
   );
 }
-
-export default Home;

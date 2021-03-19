@@ -1,35 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 import { Icon, Menu, Table } from 'semantic-ui-react'
 
-function Repos() {
+export default function RepoTable({searchTerm}) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('https://api.github.com/users/feliperucunha/repos')
+    fetch(`https://api.github.com/users/${searchTerm}/repos`)
       .then(res => res.json())
       .then(data => {
         setData(data)
-        console.log(data)
       })
   }, []);
 
     return (
-      <Table celled size="large">
+      <Table celled size="large" sortable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Nome</Table.HeaderCell>
             <Table.HeaderCell>Linguagem</Table.HeaderCell>
             <Table.HeaderCell>Estrelas</Table.HeaderCell>
-            <Table.HeaderCell>Link</Table.HeaderCell>
+            <Table.HeaderCell>Forks</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
-        {data.map(({ name, language, stargazers_count, html_url }) => (
+        {data.map(({ name, language, stargazers_count, html_url, forks }) => (
           <Table.Body>
             <Table.Row>
               <Table.Cell>
-                {name}
+                <a href={html_url}>
+                  {name}
+                </a>
               </Table.Cell> 
               <Table.Cell>
                 {language}
@@ -38,10 +40,7 @@ function Repos() {
                 {stargazers_count}
               </Table.Cell> 
               <Table.Cell>
-                <a href={html_url}>
-                  <Icon name='github' />
-                  Visitar Github
-                </a>
+                {forks}
               </Table.Cell> 
             </Table.Row>
           </Table.Body>
@@ -71,4 +70,6 @@ function Repos() {
     )
 }
 
-export default Repos
+RepoTable.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+};

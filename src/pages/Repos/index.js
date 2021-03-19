@@ -1,11 +1,14 @@
 import React from 'react';
-import Table from '../../components/Table';
-import { NavLink } from 'react-router-dom';
+import RepoTable from '../../components/Table';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 
 import './styles.css'
 
 export default function Ativos() {
+  
+  const { location } = useHistory()
+
   return (
     <div className="table-container">
       <NavLink to="/">
@@ -14,7 +17,7 @@ export default function Ativos() {
         </div>
       </NavLink>
 
-      <Table />
+      <RepoTable searchTerm={location.state.userInput}/>
     </div>
   );
 }
