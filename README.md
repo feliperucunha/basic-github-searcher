@@ -15,3 +15,8 @@
 * Utilização de styled components.
 * Habilitar paginação.
 * Hospedar (deploy).
+
+### Imagens da aplicação funcionando
+
+<img src="assets/page1.png" width="70%">
+<img src="assets/page2.png" width="70%">
