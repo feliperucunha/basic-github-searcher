@@ -104,7 +104,7 @@ function Home() {
               </a>
             </Card.Content>
             <Card.Content extra>
-              <NavLink to="/repos">
+              <NavLink to="/repos" >
                 <a className="pulse">
                   <Icon name='fork' />
                   {repos} Repositórios

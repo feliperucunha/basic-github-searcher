@@ -1,81 +1,77 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import { Icon, Menu, Table } from 'semantic-ui-react'
 
 function Repos() {
   const [name, setName] = useState('');
-  const [userName, setUserName] = useState('');
-  const [followers, setFollowers] = useState('');
-  const [following, setFollowing] = useState('');
-  const [repos, setRepos] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [userInput, setUserInput] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [userBio, setBio] = useState('');
+  const [language, setLanguage] = useState('');
+  const [stars, setStars] = useState('');
   const [githubLink, setGithubLink] = useState('');
 
   useEffect(() => {
-    fetch('https://api.github.com/users/example')
+    fetch('https://api.github.com/users/feliperucunha/repos')
       .then(res => res.json())
       .then(data => {
         setData(data)
       })
   }, []);
 
-  const setData = ({ name, login, followers, following, public_repos, avatar_url, email, bio, html_url}) => {
+  const setData = ({ name, language, stargazers_count, html_url}) => {
     setName(name)
-    setUserName(login)
-    setFollowers(followers)
-    setFollowing(following)
-    setRepos(public_repos)
-    setAvatar(avatar_url)
-    setUserEmail(email)
+    setLanguage(language)
+    setStars(stargazers_count)
     setGithubLink(html_url)
-    setBio(bio)
   }
 
   const handleRepos = () => {
-    fetch(`https://api.github.com/users/${userInput}/repos`)
+    fetch(`https://api.github.com/users/feliperucunha/repos`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setData(data);
       })
   }
 
     return (
       <Table className="table" celled>
+        {handleRepos}
         <Table.Header>
+          <button onClick={handleRepos}>oi</button>
           <Table.Row>
-            <Table.HeaderCell>Header</Table.HeaderCell>
-            <Table.HeaderCell>Header</Table.HeaderCell>
-            <Table.HeaderCell>Header</Table.HeaderCell>
+            <Table.HeaderCell>Nome</Table.HeaderCell>
+            <Table.HeaderCell>Linguagem</Table.HeaderCell>
+            <Table.HeaderCell>Estrelas</Table.HeaderCell>
+            <Table.HeaderCell>Link</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
     
         <Table.Body>
           <Table.Row>
-            <Table.Cell>
-              <Label ribbon>First</Label>
-            </Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
+            {setData.filter(items => items.name.map(items => {
+              return (
+                <Table.Cell>{items.name}</Table.Cell>
+              )
+            }))}
+            {setData.filter(items => items.language.map(items => {
+              return (
+                <Table.Cell>{items.language}</Table.Cell>
+              )
+            }))}
+            {setData.filter(items => items.stars.map(items => {
+              return (
+                <Table.Cell>{items.stars}</Table.Cell>
+              )
+            }))}
+            {setData.filter(items => items.githubLink.map(items => {
+              return (
+                <Table.Cell>{items.githubLink}</Table.Cell>
+              )
+            }))}
           </Table.Row>
         </Table.Body>
     
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan='3'>
+            <Table.HeaderCell colSpan='4'>
               <Menu floated='right' pagination>
                 <Menu.Item as='a' icon>
                   <Icon name='chevron left' />
