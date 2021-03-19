@@ -59,7 +59,7 @@ function Home() {
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Input placeholder='Usuário' name='github user' onChange={handleSearch}/>
-            <Form.Button content='Procurar' />
+            <Form.Button color="purple" content='Procurar' />
           </Form.Group>
         </Form>
       </div>
@@ -73,13 +73,28 @@ function Home() {
         <div className="card">
           <Card>
             <Image src={avatar} wrapped ui={false} />
+
             <Card.Content>
               <Card.Header>{name}</Card.Header>
-              <Card.Header className="username">{userName}</Card.Header>
+              <Card.Header className="username">
+                <a href={githubLink}>
+                  {userName} 
+                </a>
+              </Card.Header>
 
               <Card.Description>
                 {userBio}
               </Card.Description>
+
+            </Card.Content>
+
+            <Card.Content extra>
+              <NavLink to="/repos" >
+                <a className="pulse">
+                  <Icon name='fork' />
+                  {repos} Repositório(s)
+                </a>
+              </NavLink>
             </Card.Content>
             <Card.Content extra>
               <a>
@@ -92,24 +107,10 @@ function Home() {
               </a>
             </Card.Content>
             <Card.Content extra>
-              <a href={githubLink}>
-                <Icon name='github' />
-                Visitar Github
-              </a>
-            </Card.Content>
-            <Card.Content extra>
               <a>
                 <Icon name='mail' />
                 {userEmail}
               </a>
-            </Card.Content>
-            <Card.Content extra>
-              <NavLink to="/repos" >
-                <a className="pulse">
-                  <Icon name='fork' />
-                  {repos} Repositórios
-                </a>
-              </NavLink>
             </Card.Content>
           </Card>
         </div>
