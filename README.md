@@ -10,3 +10,8 @@
 * Ao encontrar um usuário, você pode selecionar seus repositórios, sendo assim redirecionado a outra página.
 * Na página de repositórios você pode verificar todos os repositórios daquele usuário.
 * Para voltar à página de pesquisa, basta clicar na logo na navbar.
+
+## Pontos a melhorar
+* Utilização de styled components.
+* Habilitar paginação.
+* Hospedar (deploy).

@@ -17,7 +17,7 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://api.github.com/users/example')
+    fetch('https://api.github.com/users/feliperucunha')
       .then(res => res.json())
       .then(data => {
         setData(data)
@@ -71,7 +71,7 @@ export default function Home() {
         </div>   
       ) : (
         <div className="card">
-          <Card>
+          <Card fluid>
             <Image src={avatar} wrapped ui={false} />
 
             <Card.Content>
@@ -85,7 +85,6 @@ export default function Home() {
               <Card.Description>
                 {userBio}
               </Card.Description>
-
             </Card.Content>
 
             <Card.Content extra>

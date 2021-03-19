@@ -6,8 +6,7 @@ function Navbar() {
     return (
       <div className="navbar">
         <NavLink to="/">
-          {/* <img src="https://prismic-io.s3.amazonaws.com/cosmobots-website/a06ad421-5c55-4396-8bed-566463eeb8bc_logocosmonew-svg.svg?auto=format%2Ccompress&fit=max&q=50" /> */}
-          <h3>Pesquisa Github UFPA</h3>
+          <img src="https://prismic-io.s3.amazonaws.com/cosmobots-website/a06ad421-5c55-4396-8bed-566463eeb8bc_logocosmonew-svg.svg?auto=format%2Ccompress&fit=max&q=50" />
         </NavLink>
         
       </div>
