@@ -10,9 +10,9 @@
   justify-content: center;
   flex-direction: row;
   border: none;
-  max-width: 35%;
-  max-height: 35%;
-  margin-left: 32%;
+  max-width: 25%;
+  max-height: 25%;
+  margin-left: 37%;
 }
 
 .card-head {
